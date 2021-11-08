@@ -1,0 +1,142 @@
+﻿<Window x:Class="SuperHerores.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SuperHerores"
+        mc:Ignorable="d"
+        Title="Superheroes"
+        Height="450"
+        Width="800"
+        Icon="assets/shield.ico">
+
+    <Window.Resources>
+
+        <local:ColorFondoConverter x:Key="BackgroundColor" />
+        <local:IconoHeroeConverter x:Key="IconoVisible" />
+
+        <Style TargetType="{x:Type Image}"
+               x:Key="Iconos">
+
+            <Setter Property="DockPanel.Dock"
+                    Value="Right" />
+            
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
+            
+            <Setter Property="Width"
+                    Value="50" />
+            
+            <Setter Property="Height"
+                    Value="50" />
+            
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}"
+               x:Key="NombreSuperHeroe">
+
+            <Setter Property="DockPanel.Dock"
+                    Value="Left" />
+
+            <Setter Property="FontSize"
+                    Value="38" />
+
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+
+            <Setter Property="Foreground"
+                    Value="White" />
+
+            <Setter Property="VerticalAlignment"
+                    Value="Top" />
+
+            <Setter Property="Effect">
+
+                <Setter.Value>
+                    <DropShadowEffect />
+                </Setter.Value>
+                
+            </Setter>
+            
+        </Style>
+        
+    </Window.Resources>
+    <Grid x:Name="GridSuperHeroe"
+          Background="{Binding Converter={StaticResource BackgroundColor}, Path=Heroe}">
+        <Grid Margin="5">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <DockPanel LastChildFill="False">
+
+                <TextBlock x:Name="NombreTextBlock"
+                           Style="{StaticResource NombreSuperHeroe}"
+                           Text="{Binding Path = Nombre}" />
+
+                <Image x:Name="GrupoImage"
+                       Source="assets/xmen.png"
+                       Style="{StaticResource Iconos}"
+                       Visibility="{Binding Converter={StaticResource IconoVisible}, Path=Vengador}" />
+                
+                <Image x:Name="GrupoImage2"
+                       Source="assets/avengers.png"
+                       Style="{StaticResource Iconos}"
+                       Visibility="{Binding Converter={StaticResource IconoVisible}, Path=Xmen}" />
+            </DockPanel>
+
+            <Image Grid.Row="1"
+                   x:Name="SuperHeroeImage"
+                   Source="{Binding Path=Imagen}"
+                   Stretch="Fill" />
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="2"
+                        HorizontalAlignment="Center"
+                        Height="30">
+
+                <Button Height="30"
+                        Width="30"
+                        Click="SuperHeroeAnterior"
+                        BorderBrush="{x:Null}"
+                        Foreground="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="arrow.png" />
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="numeroHeroeTextBlock"
+                           Text="1/3"
+                           VerticalAlignment="Center"
+                           FontSize="22"
+                           FontWeight="Bold" />
+                <Button Height="30"
+                        Width="30"
+                        RenderTransformOrigin="0.5,0.5"
+                        Click="SiguienteSuperHeroe"
+                        BorderBrush="{x:Null}"
+                        Foreground="{x:Null}">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"
+                                            ScaleX="-1" />
+                            <SkewTransform AngleY="0"
+                                           AngleX="0" />
+                            <RotateTransform Angle="0" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Button.Background>
+                        <ImageBrush ImageSource="arrow.png" />
+                    </Button.Background>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
