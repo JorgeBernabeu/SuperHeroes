@@ -17,40 +17,22 @@ namespace SuperHerores
 {
     public partial class MainWindow : Window
     {
-        List<Superheroe> Superheroes = Superheroe.GetSamples();
+        MainWindowsVM vm = new MainWindowsVM();
         public MainWindow()
         {
             InitializeComponent();
-            numeroHeroeTextBlock.Tag = 0;
-            GridSuperHeroe.DataContext = Superheroes[0];
-            GrupoImage.DataContext = Superheroes[0].Vengador;
-            GrupoImage2.DataContext = Superheroes[0].Xmen;
+            this.DataContext = vm;
         }
 
         private void SuperHeroeAnterior(object sender, RoutedEventArgs e)
         {
-            string numHeroe = numeroHeroeTextBlock.Tag.ToString();
-            if (int.Parse(numHeroe) - 1 != -1)
-            {
-                GridSuperHeroe.DataContext = Superheroes[int.Parse(numHeroe) - 1];
-                numHeroe = (int.Parse(numHeroe) - 1).ToString();
-                numeroHeroeTextBlock.Tag = numHeroe;
-                numeroHeroeTextBlock.Text = $"{int.Parse(numHeroe) + 1}/3";
-            }
+            vm.Retroceder();
             
         }
         
         private void SiguienteSuperHeroe(object sender, RoutedEventArgs e)
         {
-            string numHeroe = numeroHeroeTextBlock.Tag.ToString();
-
-            if (int.Parse(numHeroe) + 1 != 3)
-            {
-                GridSuperHeroe.DataContext = Superheroes[int.Parse(numHeroe) + 1];
-                numHeroe = (int.Parse(numHeroe) + 1).ToString();
-                numeroHeroeTextBlock.Tag = numHeroe;
-                numeroHeroeTextBlock.Text = $"{int.Parse(numHeroe) + 1}/3";
-            }
+            vm.Avanzar();
         }
     }
 }

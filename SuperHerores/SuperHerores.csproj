@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="ColorFondoConverter.cs" />
     <Compile Include="IconoHeroeConverter.cs" />
+    <Compile Include="MainWindowsVM.cs" />
     <Compile Include="Superheroe.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

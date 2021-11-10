@@ -62,7 +62,7 @@
         
     </Window.Resources>
     <Grid x:Name="GridSuperHeroe"
-          Background="{Binding Converter={StaticResource BackgroundColor}, Path=Heroe}">
+          Background="{Binding Converter={StaticResource BackgroundColor}, Path=SuperheroeActual.Heroe}">
         <Grid Margin="5">
 
             <Grid.ColumnDefinitions>
@@ -78,22 +78,22 @@
 
                 <TextBlock x:Name="NombreTextBlock"
                            Style="{StaticResource NombreSuperHeroe}"
-                           Text="{Binding Path = Nombre}" />
+                           Text="{Binding Path = SuperheroeActual.Nombre}" />
 
                 <Image x:Name="GrupoImage"
                        Source="assets/xmen.png"
                        Style="{StaticResource Iconos}"
-                       Visibility="{Binding Converter={StaticResource IconoVisible}, Path=Vengador}" />
+                       Visibility="{Binding Converter={StaticResource IconoVisible}, Path=SuperheroeActual.Vengador}" />
                 
                 <Image x:Name="GrupoImage2"
                        Source="assets/avengers.png"
                        Style="{StaticResource Iconos}"
-                       Visibility="{Binding Converter={StaticResource IconoVisible}, Path=Xmen}" />
+                       Visibility="{Binding Converter={StaticResource IconoVisible}, Path=SuperheroeActual.Xmen}" />
             </DockPanel>
 
             <Image Grid.Row="1"
                    x:Name="SuperHeroeImage"
-                   Source="{Binding Path=Imagen}"
+                   Source="{Binding Path=SuperheroeActual.Imagen}"
                    Stretch="Fill" />
 
             <StackPanel Orientation="Horizontal"
@@ -111,7 +111,12 @@
                     </Button.Background>
                 </Button>
                 <TextBlock x:Name="numeroHeroeTextBlock"
-                           Text="1/3"
+                           Text="{Binding Path=NumHeroeActual}"
+                           VerticalAlignment="Center"
+                           FontSize="22"
+                           FontWeight="Bold" />
+                <TextBlock x:Name="numeroHeroeTotalTextBlock"
+                           Text="{Binding Path=NumHeroesLista}"
                            VerticalAlignment="Center"
                            FontSize="22"
                            FontWeight="Bold" />
