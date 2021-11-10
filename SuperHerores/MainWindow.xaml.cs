@@ -33,8 +33,6 @@ namespace SuperHerores
             if (int.Parse(numHeroe) - 1 != -1)
             {
                 GridSuperHeroe.DataContext = Superheroes[int.Parse(numHeroe) - 1];
-                GrupoImage.DataContext = Superheroes[int.Parse(numHeroe) - 1].Vengador;
-                GrupoImage2.DataContext = Superheroes[int.Parse(numHeroe) - 1].Xmen;
                 numHeroe = (int.Parse(numHeroe) - 1).ToString();
                 numeroHeroeTextBlock.Tag = numHeroe;
                 numeroHeroeTextBlock.Text = $"{int.Parse(numHeroe) + 1}/3";
@@ -49,8 +47,6 @@ namespace SuperHerores
             if (int.Parse(numHeroe) + 1 != 3)
             {
                 GridSuperHeroe.DataContext = Superheroes[int.Parse(numHeroe) + 1];
-                GrupoImage.DataContext = Superheroes[int.Parse(numHeroe) + 1].Vengador;
-                GrupoImage2.DataContext = Superheroes[int.Parse(numHeroe) + 1].Xmen;
                 numHeroe = (int.Parse(numHeroe) + 1).ToString();
                 numeroHeroeTextBlock.Tag = numHeroe;
                 numeroHeroeTextBlock.Text = $"{int.Parse(numHeroe) + 1}/3";
