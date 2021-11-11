@@ -55,7 +55,7 @@ namespace SuperHerores
             if (NumHeroeActual < NumHeroesLista)
             {
                 NumHeroeActual++;
-                SuperheroeActual = lista[NumHeroesLista - 1];
+                SuperheroeActual = lista[NumHeroeActual - 1];
             }
         }
 
@@ -64,7 +64,7 @@ namespace SuperHerores
             if (NumHeroeActual > 1)
             {
                 NumHeroeActual--;
-                SuperheroeActual = lista[NumHeroesLista - 1];
+                SuperheroeActual = lista[NumHeroeActual - 1];
             }
         }
 

@@ -115,6 +115,9 @@
                            VerticalAlignment="Center"
                            FontSize="22"
                            FontWeight="Bold" />
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="22"
+                           FontWeight="Bold">/</TextBlock>
                 <TextBlock x:Name="numeroHeroeTotalTextBlock"
                            Text="{Binding Path=NumHeroesLista}"
                            VerticalAlignment="Center"
