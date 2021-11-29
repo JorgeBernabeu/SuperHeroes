@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace SuperHerores
 {
-    class MainWindowsVM : INotifyPropertyChanged
+    class MainWindowsVM : ObservableObject
     {
         public Superheroe superheroeActual;
-
+        private ListaSuperheroesService servicioHeroes;
+        private List<Superheroe> lista;
         public Superheroe SuperheroeActual {
             get { return superheroeActual; }
             set
             {
-                superheroeActual = value;
-                NotifyPropertyChanged("SuperheroeActual");
+                SetProperty(ref superheroeActual, value);
             } 
         }
 
@@ -24,9 +25,8 @@ namespace SuperHerores
         public int NumHeroeActual { 
             get { return numHeroeActual; }
             set
-            {
-                numHeroeActual = value;
-                NotifyPropertyChanged("NumHeroeActual");
+            { 
+                SetProperty(ref numHeroeActual, value);
             }
         }
 
@@ -35,16 +35,14 @@ namespace SuperHerores
             get { return numHeroesLista;  }
             set
             {
-                numHeroesLista = value;
-                NotifyPropertyChanged("NumHeroesLista");
+                SetProperty(ref numHeroesLista, value);
             }
         }
 
-        List<Superheroe> lista = Superheroe.GetSamples();
-
         public MainWindowsVM()
         {
-            
+            servicioHeroes = new ListaSuperheroesService();
+            lista = servicioHeroes.GetSamples();
             SuperheroeActual = lista[0];
             NumHeroeActual = 1;
             NumHeroesLista = lista.Count;
@@ -66,15 +64,6 @@ namespace SuperHerores
                 NumHeroeActual--;
                 SuperheroeActual = lista[NumHeroeActual - 1];
             }
-        }
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
